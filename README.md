@@ -1,2 +1,2 @@
-# bank-marketing-models
-Building statistical models to evaluate the success of marketing efforts for a Portuguese bank.
+# bank-marketing-analysis
+A repository for building statistical models to evaluate a Portuguese bank's marketing efforts.
