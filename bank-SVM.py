@@ -23,10 +23,10 @@ def main():
     print('Naive Approach:', sum/len(y), '\t(Predict that no one subscribes)')
 
     # perform k-fold cross-validation
-    kf = KFold(n_splits=10)
+    kf = KFold(n_splits=2)
 
     # initialize a SVM classifier
-    clf = svm.SVC()
+    clf = svm.SVC(kernel='linear', C=2)
 
     ave = 0
 
@@ -38,14 +38,14 @@ def main():
         clf.fit(X[train_index], y[train_index])
         ave += clf.score(X[test_index], y[test_index])
 
-    ave /= 10
+    ave /= 2
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.50)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15)
 
     clf.fit(X_train, y_train)
-    print(clf.score(X_test, y_test))
+    print('Train: 85%; Test: 15%; Accuracy: ', clf.score(X_test, y_test))
 
-    print(ave)
+    print('2-Fold Cross-Validation Accuracy:', ave)
     
 
 if __name__ == '__main__':
