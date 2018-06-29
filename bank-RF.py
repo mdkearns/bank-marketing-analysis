@@ -24,10 +24,10 @@ def main():
     print('Naive Approach:', sum / len(y), '\t(Predict that no one subscribes)')
 
     # perform k-fold cross-validation
-    kf = KFold(n_splits=5)
+    kf = KFold(n_splits=10)
 
     # initialize a SVM classifier
-    clf = RandomForestClassifier()
+    clf = RandomForestClassifier(n_estimators=5)
 
     ave = 0
 
@@ -40,10 +40,10 @@ def main():
 
     ave /= 5
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.05)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.10)
 
     clf.fit(X_train, y_train)
-    print('Train: 85%; Test: 15%; Accuracy: ', clf.score(X_test, y_test))
+    print('Train: 90%; Test: 10%; Accuracy: ', clf.score(X_test, y_test))
 
     print('5-Fold Cross-Validation Accuracy:', ave)
 
